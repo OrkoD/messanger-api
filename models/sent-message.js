@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const MessageSchema = new mongoose.Schema({
+const SentMessageSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -13,16 +13,10 @@ const MessageSchema = new mongoose.Schema({
     minlength: 1,
     maxlength: 1000
   },
-  sensder: {
+  recipient: {
     type: String,
     required: true,
     minlength: 1,
-    maxlength: 50
-  },
-  type: {
-    type: String,
-    required: true,
-    minlength: 2,
     maxlength: 50
   },
   createdAt: {
@@ -36,4 +30,4 @@ const MessageSchema = new mongoose.Schema({
   }
 })
 
-exports.Message = mongoose.model('Message', MessageSchema);
+exports.Message = mongoose.model('SentMessage', SentMessageSchema);

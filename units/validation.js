@@ -14,7 +14,17 @@ const validateMessage = message => {
   const schema = {
     title: Joi.string().required().min(1).max(50),
     text: Joi.string().required().min(1).max(1000),
-    receiver: Joi.string().required().min(3).max(50),
+    sender: Joi.string().required().min(1).max(50),
+    type: Joi.string().required().min(2).max(50)
+  }
+  return Joi.validate( message, schema );
+}
+
+const validateSentMessage = message => {
+  const schema = {
+    title: Joi.string().required().min(1).max(50),
+    text: Joi.string().required().min(1).max(1000),
+    recipient: Joi.string().required().min(1).max(50),
     type: Joi.string().required().min(2).max(50)
   }
   return Joi.validate( message, schema );
@@ -22,3 +32,4 @@ const validateMessage = message => {
 
 exports.validateContact = validateContact;
 exports.validateMessage = validateMessage;
+exports.validateMessage = validateSentMessage;

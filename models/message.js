@@ -15,7 +15,11 @@ const MessageSchema = new mongoose.Schema({
   },
   sensder: {
     type: String,
-    required: true,
+    minlength: 1,
+    maxlength: 50
+  },
+  recipient: {
+    type: String,
     minlength: 1,
     maxlength: 50
   },

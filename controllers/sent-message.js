@@ -30,3 +30,15 @@ module.exports.deleteMessage = async (req, res) => {
     message
   });
 };
+
+module.exports.updateMessage = async (req, res) => {
+  const message = await SentMessage.findByIdAndUpdate(
+    { _id: req.params.id },
+    { $set: req.body },
+    { new: true }
+  );
+  return res.status(200).json({
+    success: true,
+    message
+  })
+};

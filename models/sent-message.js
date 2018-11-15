@@ -30,4 +30,4 @@ const SentMessageSchema = new mongoose.Schema({
   }
 })
 
-exports.Message = mongoose.model('SentMessage', SentMessageSchema);
+exports.SentMessage = mongoose.model('SentMessage', SentMessageSchema);

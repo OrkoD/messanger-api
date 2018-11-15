@@ -18,15 +18,18 @@ module.exports.addContact = async (req, res) => {
     message: error.details[0].message
   })
 
-  let contact = await Contact.findOne({ phone: req.body.phone });
-  if ( contact ) return res.status(400).json({
+  let contact = await Contact.findOne( req.body );
+  if ( contact ) return res.json({
     success: false,
-    message: 'Contact with this phone is already registered!'
+    message: 'This contact is already exist!'
   })
-  
   contact = Contact( req.body );
   await contact.save();
-  return res.json( contact );
+  return res.json({
+    success: true,
+    message: 'New contact was successfully added to address book!',
+    contact
+  });
 };
 
 module.exports.updateContact = async (req, res) => {

@@ -3,13 +3,11 @@ const mongoose = require('mongoose');
 const ContactSchema = new mongoose.Schema({
   fullName: {
     type: String,
-    required: true,
     minlength: 3,
     maxlength: 50
   },
   email: {
     type: String,
-    required: true,
     minlength: 4,
     maxlength: 50,
     unique: true
@@ -17,8 +15,7 @@ const ContactSchema = new mongoose.Schema({
   phone: {
     type: String,
     minlength: 4,
-    maxlength: 50,
-    required: true
+    maxlength: 50
   },
   gender: {
     type: String,

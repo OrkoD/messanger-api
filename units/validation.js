@@ -16,7 +16,8 @@ const validateMessage = message => {
     text: Joi.string().required().min(1).max(1000),
     sender: Joi.string().min(1).max(50),
     recipient: Joi.string().min(1).max(50),
-    type: Joi.string().required().min(2).max(50)
+    type: Joi.string().required().min(2).max(50),
+    converstationId: Joi.string()
   }
   return Joi.validate( message, schema );
 }

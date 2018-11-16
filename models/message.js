@@ -37,6 +37,9 @@ const MessageSchema = new mongoose.Schema({
   starred: {
     type: Boolean,
     default: false
+  },
+  converstationId: {
+    type: { type: mongoose.Schema.Types.ObjectId, ref: `Conversation` }
   }
 })
 

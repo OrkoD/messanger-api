@@ -1,32 +1,32 @@
 const { Conversation } = require('../models/conversation');
 
 module.exports.getConversations = async (req, res) => {
-  const conversation = await Conversation.find();
+  const conversation = await Conversation.find().populate('participant').exec();
   return res.status(200).json( conversation );
 };
 
 module.exports.getConversation = async (req, res) => {
-  const conversation = await Conversation.findById( req.params.id ).populate('participant');
+  const conversation = await Conversation.findById( req.params.id ).populate('participant').exec();
   res.status(200).json( conversation );
 };
 
 module.exports.addConversation = async (req, res) => {
-  // let conversation = await Conversation.findOne( req.body );
-  // if ( conversation ) return res.json({
-  //   success: false,
-  //   message: 'This conversation is already exist!'
-  // })
+  let conversation = await Conversation.findOne( req.body );
+  if ( conversation ) return res.json({
+    success: false,
+    message: 'This conversation is already exist!'
+  })
 
-  // conversation = Conversation( req.body );
-  const con = Conversation(req.body);
-  console.log(con);
-  // await conversation.save();
+  conversation = Conversation( req.body );
+  // const con = Conversation(req.body);
+  // console.log(con);
+  await conversation.save();
 
-  // return res.json({
-  //   success: true,
-  //   message: 'New conversation was successfully created!',
-  //   conversation
-  // });
+  return res.json({
+    success: true,
+    message: 'New conversation was successfully created!',
+    conversation
+  });
 };
 
 module.exports.updateConversation = async (req, res) => {

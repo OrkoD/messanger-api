@@ -6,6 +6,11 @@ module.exports.getMessages = async (req, res) => {
   return res.status(200).json( messages );
 };
 
+module.exports.getConversationMessages = async (req, res) => {
+  const messages = await Message.find({conversationId: req.params.id}).sort('createdAt');
+  return res.status(200).json( messages );
+};
+
 module.exports.getMessage = async (req, res) => {
   const message = await Message.findById( req.params.id );
   res.status(200).json( message );

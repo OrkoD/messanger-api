@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 
 const ConversationSchema = new mongoose.Schema({
-  participant: {
-    type: { type: mongoose.Schema.Types.ObjectId, ref: `Contact` }
-  },
+  participant: { type: mongoose.Schema.Types.ObjectId, ref: `Contact` },
   createdAt: {
     type: Date,
     required: true,
